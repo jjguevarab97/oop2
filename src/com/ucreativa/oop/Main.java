@@ -17,7 +17,7 @@ public class Main {
 
         variable = "Hola";
 
-        variable = "Clase de Programacion";
+        variable = "Clase de Programacion Java";
 
         metodo(2);
         variable = metodo(variable);
