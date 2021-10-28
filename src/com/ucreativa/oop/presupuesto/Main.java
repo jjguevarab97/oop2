@@ -1,45 +1,36 @@
 package com.ucreativa.oop.presupuesto;
 
 import com.ucreativa.oop.presupuesto.entidades.Gasto;
-import com.ucreativa.oop.presupuesto.entidades.RegistroGastos;
-
-import java.util.ArrayList;
+import com.ucreativa.oop.presupuesto.entidades.Ingreso;
+import com.ucreativa.oop.presupuesto.entidades.Movimiento;
 
 
 public class Main {
     public static void main(String[] args) {
 
 
-    }
-        System.out.println("Mi nuevo Main");
+
         System.out.println("Sistema Registro de Gastos");
+        System.out.println("Sistema Registro de Movimientos");
         Scanner consola = new Scanner(System.in);
         boolean siga = true;
         RegistroGastos registo = new RegistroGastos();
+        RegistroMovimientos registo = new RegistroMovimientos();
 
-        Gasto gastoLuz = new Gasto();
-        gastoLuz.nombre = "Luz";
-        gastoLuz.moneda = "Colones";
-        gastoLuz.monto = 22000;
         while (siga) {
             System.out.println("Digite el nombre de su gasto:");
+            System.out.println("Digite el nombre de su Movimiento:");
             String nombre = consola.nextLine();
 
-            Gasto gastoInternet = new Gasto();
-            gastoInternet.nombre = "Internet";
-            gastoInternet.moneda = "Colones";
-            gastoInternet.monto = 30000;
             System.out.println("Digite la Moneda:");
             String moneda = consola.nextLine();
 
-            RegistroGastos registo = new RegistroGastos();
-            registo.gastos = new ArrayList<>();
-            registo.gastos.add(gastoLuz);
-            registo.gastos.add(gastoInternet);
             System.out.println("Digite la categoria de su gasto:");
+            System.out.println("Digite la categoria de su Moviento:");
             String categoria = consola.nextLine();
 
             System.out.println("Digite el monto de su gasto:");
+            System.out.println("Digite el monto de su Movimiento:");
             String montoStr = consola.nextLine();
             int monto = Integer.parseInt(montoStr);
 
@@ -47,17 +38,35 @@ public class Main {
                     moneda,
                     categoria,
                     monto);
+            Movimiento nuevoMovimiento;
+
+            System.out.println("Indique si es un Gasto (S)");
+            if (consola.nextLine().equals("S")){
+                nuevoMovimiento = new Gasto(nombre,
+                        moneda,
+                        categoria,
+                        monto);
+            } else {
+                System.out.println("Especifique la Periodicidad:");
+                String periodicidad = consola.nextLine();
+
+                nuevoMovimiento = new Ingreso(nombre,
+                        moneda,
+                        categoria,
+                        monto,
+                        periodicidad);
+            }
+            registo.addMovimiento(nuevoMovimiento);
 
             registo.addGastos(nuevoGasto);
+            System.out.println("Todos los movientos:");
+            for (Movimiento movimientos : registo.getMovimientos()) {
+                System.out.println(movimientos.getNombre());
+            }
 
-            for (int i = 0; i < registo.gastos.size(); i++) {
-                System.out.println(registo.gastos.get(i).nombre);
-                for (Gasto gastico : registo.getGastos()) {
+            for (Gasto gastico : registo.getGastos()) {
+                System.out.println("Solo Gastos:");
+                for (Movimiento gastico : registo.getGastos()) {
                     System.out.println(gastico.getNombre());
                 }
 
-                System.out.println("Quiere Seguir?(`S`)");
-                siga = consola.nextLine().equals("S");
-        }
-    }
-}
