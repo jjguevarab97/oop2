@@ -2,5 +2,12 @@ package com.ucreativa.oop.presupuesto.logicaNegocio;
 
 public class InterfaceReportes {
 
-    void imprimirReporte();
+import java.util.List;
+
+    public interface InterfaceReportes {
+
+
+        List<String> getMovimientos();
+
+        void getGastos();
 }

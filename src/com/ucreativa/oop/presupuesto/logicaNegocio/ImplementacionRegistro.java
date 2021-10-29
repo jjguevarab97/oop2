@@ -5,6 +5,10 @@ import com.ucreativa.oop.presupuesto.repo.ErrorMuyPocaData;
 import com.ucreativa.oop.presupuesto.repo.InterfaceRepository;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class ImplementacionRegistro implements InterfaceRegistro {
 
@@ -30,12 +34,13 @@ public class ImplementacionRegistro implements InterfaceRegistro {
 
         @Override
         public boolean addGasto(String nombre, String moneda, String categoria, String montoStr) {
-            public boolean addGasto(String nombre, String moneda, String categoria, String montoStr) throws ErrorMuyPocaData {
+            public boolean addGasto(String nombre, String moneda, String categoria, String montoStr) throws ErrorMuyPocaData
+            {
                 int monto;
                 try {
                     monto = Integer.parseInt(montoStr);
-                }catch (NumberFormatException ex){
-                    System.out.println("Formato Invalido en ("+montoStr+"): " + ex.getMessage());
+                } catch (NumberFormatException ex) {
+                    System.out.println("Formato Invalido en (" + montoStr + "): " + ex.getMessage());
                     return false;
                 }
                 Movimiento gasto = new Gasto(nombre,
@@ -43,13 +48,5 @@ public class ImplementacionRegistro implements InterfaceRegistro {
                         categoria,
                         monto);
                 return this.repository.save(gasto.getDetails());
-            }
-            @Override
-            public void getMovimientos() {
-                this.repository.read();
-            }
-            @Override
-            public void getGastos() {
-                this.repository.read();
             }
         }

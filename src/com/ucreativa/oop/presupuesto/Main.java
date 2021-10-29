@@ -4,6 +4,8 @@ import com.ucreativa.oop.presupuesto.entidades.Gasto;
 import com.ucreativa.oop.presupuesto.entidades.Ingreso;
 import com.ucreativa.oop.presupuesto.logicaNegocio.ImplementacionSuperDummy;
 import com.ucreativa.oop.presupuesto.logicaNegocio.InterfaceRegistro;
+import com.ucreativa.oop.presupuesto.logicaNegocio.ImplementacionRegistro;
+import com.ucreativa.oop.presupuesto.repo.InMemoryRepository;
 
 public class Main {
     public static void main(String[] args) {

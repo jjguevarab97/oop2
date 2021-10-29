@@ -1,39 +1,28 @@
 package com.ucreativa.oop.presupuesto.repo;
-
-import java.io.*;
-import java.util.stream.Collectors;
-
-public class FileRepository implements InterfaceRepository{
-
-    private final String FILE_PATH = "db.txt";
-
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+public class InMemoryRepository implements InterfaceRepository{
+    List<String> movimientos;
+    public InMemoryRepository(){
+        movimientos = new ArrayList<>();
+    }
     @Override
     public boolean save(String text) {
-        try {
-            try (FileWriter fileWriter = new FileWriter(this.FILE_PATH, true);
-                 BufferedWriter writer = new BufferedWriter(fileWriter)) {
-            writer.append(text).append("\n");
-
-            return true;
-        }catch (IOException e){
-            e.printStackTrace();
-            return false;
-        }
+        movimientos.add(text);
+        return true;
     }
 
     @Override
-    public void read() {
 
-        try {
-            FileReader fileReader = new FileReader(this.FILE_PATH);
-            BufferedReader reader = new BufferedReader(fileReader);
-            for (String linea :  reader.lines().collect(Collectors.toList())){
-                System.out.println(linea);
+        public List<String> read() {
+
+            try {
+                throw new IOException();
+                @@ -30,5 +30,6 @@ public void read() {
+                    for (String item : this.movimientos){
+                        System.out.println(item);
+                    }
+                    return null;
+                }
             }
-            fileReader.close();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-    }
-}
