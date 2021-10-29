@@ -8,5 +8,6 @@ public class InterfaceRegistro {
 
     void addGasto(String nombre, String moneda, String categoria, String montoStr);
 
+    void getMovimientos();
     void getGastos();
 }

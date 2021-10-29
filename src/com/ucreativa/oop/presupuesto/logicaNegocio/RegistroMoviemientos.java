@@ -1,9 +1,6 @@
 package com.ucreativa.oop.presupuesto.logicaNegocio;
 
 import com.ucreativa.oop.presupuesto.entidades.Gasto;
-import com.ucreativa.oop.presupuesto.entidades.Movimiento;
-
-import java.util.Date;
 
 public class RegistroMoviemientos {
 

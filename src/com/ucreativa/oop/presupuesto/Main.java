@@ -2,8 +2,6 @@ package com.ucreativa.oop.presupuesto;
 
 import com.ucreativa.oop.presupuesto.entidades.Gasto;
 import com.ucreativa.oop.presupuesto.entidades.Ingreso;
-import com.ucreativa.oop.presupuesto.entidades.Movimiento;
-import com.ucreativa.oop.presupuesto.logicaNegocio.ImplementacionRegistro;
 import com.ucreativa.oop.presupuesto.logicaNegocio.ImplementacionSuperDummy;
 import com.ucreativa.oop.presupuesto.logicaNegocio.InterfaceRegistro;
 
